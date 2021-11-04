@@ -1,6 +1,6 @@
 Singleton Design Pattern
 
-Can be used to create the hospital Object corrsponding to the desktop application system.( Each hospital has a desktop application to maintain and monitor all carehouses and patients under it's management)
+Can be used to create the hospital Object corresponding to the desktop application system.( Each hospital has a desktop application to maintain and monitor all carehouses and patients under it's management)
 Used to update carehouses annd patients related attributes like patients count and carehouse list of the Hospital object. Here, the same hospital object needs to updated or modified pertaining to changes like addition or removal of carehouses or patients from the system.
 
 Builder Design Pattern
