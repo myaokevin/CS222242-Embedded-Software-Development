@@ -57,9 +57,13 @@ class EncryptedStream extends StreamDecorator {
     }
 
     public void action(String str) {
-        str = "Encrypted(" + str + ")";
+        str = encrypt(str);
         super.action(str);
         
+    }
+
+    private String encrypt(String str) {
+        return "Encrypted(" + str + ")";
     }
 }
 class CompressedStream extends StreamDecorator {
@@ -69,8 +73,12 @@ class CompressedStream extends StreamDecorator {
     }
 
     public void action(String str) {
-        str = "Compressed(" + str + ")";
+        str = compress(str);
         super.action(str);
+    }
+
+    private String compress(String str) {
+        return "Compressed(" + str + ")";
     }
 }
 
