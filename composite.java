@@ -21,6 +21,9 @@ get details about each caretaker object as well. If we implement this need witho
 we would need to explicitly check whether an object is instance of which class and need to 
 invoke the getDetails() mehod of the respective class .
 But, by using this design pattern , we need not do so. 
+
+Similarly we could use eqach carehouse as leaf nodes and hospitals as composite objects.
+
 */
 
 /*
@@ -35,7 +38,7 @@ interface ResourceComponent {
     void getDetails();
 }
 
-class CareTaker implements ResourceComponent {
+class CareTaker implements ResourceComponent { // a leaf node
     private String nameOfCareTaker;
 
     CareTaker(String nameOfCareTaker) {
