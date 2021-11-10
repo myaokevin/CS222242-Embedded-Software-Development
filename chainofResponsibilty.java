@@ -37,6 +37,20 @@ Scenario 3 : (in progress)
 
 // Scenario 1
 
+/*
+Problem :
+    The request for verification is made upon attempt to login from a device. The authentication using phone number is needed to be an added protection.
+    This added protection is only needed under certain instances like login attempt from a new device while logged in on another device, while it could be skipped under instances like a recently logged in device. In such an
+    instance , we would need to  handle the request step by step before the logging in happens. The order of the steps would differ, thus we need to have control of the order of
+    the request handlers as well. There could be needs to add new protection features as well in the future , so the code must be extensible for new protection features.
+
+Solution :
+    The chain responsibilty pattern  is used to achieve loose coupling in software design. This pattern provides the possibility of easily changing the order of request handling
+    steps without altering the codes of the concrete classes. That is, we could omit the addditional code to phone number protection feature when required without altering the
+    Authenticator class in the code below. Also, a new feature like captcha verification or secret question verification  could also be added without altering any other part
+    of the code. We would only need to add a class inheriting the Handler abstract class and coding the action to be performed within the overrided action method in it. 
+
+*/
 class Request{
     // A database query is a request for data from a database.
     private String username,password;
