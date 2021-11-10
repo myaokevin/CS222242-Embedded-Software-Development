@@ -48,7 +48,9 @@ Solution :
     The chain responsibilty pattern  is used to achieve loose coupling in software design. This pattern provides the possibility of easily changing the order of request handling
     steps without altering the codes of the concrete classes. That is, we could omit the addditional code to phone number protection feature when required without altering the
     Authenticator class in the code below. Also, a new feature like captcha verification or secret question verification  could also be added without altering any other part
-    of the code. We would only need to add a class inheriting the Handler abstract class and coding the action to be performed within the overrided action method in it. 
+    of the code. We would only need to add a class inheriting the Handler abstract class and coding the action to be performed within the overrided action method in it.
+    
+    Here, the server acts as the sender while the authenticator,code sender,verifier and Logger are the receivers.
 
 */
 class Request{
@@ -65,7 +67,7 @@ class Request{
     public String getPassword() {
         return this.password;
     }
-    public String getPhoneNo() {
+    public String getPhoneNoFromDB() {
         //  get from database
         return "1234567890";
     }
@@ -132,7 +134,7 @@ class CodeSender extends Handler{
         //  Assume always successful
         boolean success = true;
         request.setCodeGenerated(codeGenerated);
-        System.out.println("Sending code to "+request.getPhoneNo()+" : "+success);
+        System.out.println("Sending code to "+request.getPhoneNoFromDB()+" : "+success);
         return success;
     }
     
@@ -140,9 +142,9 @@ class CodeSender extends Handler{
 }
 
 
-class Verify extends Handler{
+class Verifier extends Handler{
 
-    Verify(Handler nextHandler) {
+    Verifier(Handler nextHandler) {
         super(nextHandler);
     }
 
@@ -159,25 +161,22 @@ class Verify extends Handler{
 
 }
 
-class Logging extends Handler{
+class Logger extends Handler{
 
-    Logging(Handler nextHandler) {
+    Logger(Handler nextHandler) {
         super(nextHandler);
     }
     @Override
     boolean action(Request request) {
         System.out.println("Logging In");
-        return loadGUI();
-    }
-    boolean loadGUI(){
-        System.out.println("Load GUI");
         return true;
     }
+
 }
 class Scenario1{
     void test(){
-        Logging log = new Logging(null);
-        Verify verify = new Verify(log);
+        Logger log = new Logger(null);
+        Verifier verify = new Verifier(log);
         CodeSender codeSender = new CodeSender(verify);
         Authenticator auth = new Authenticator(codeSender);
         Request request =  new Request("admin", "password");
