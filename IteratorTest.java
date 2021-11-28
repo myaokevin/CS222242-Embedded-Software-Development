@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 /*
 Problem : 
@@ -15,6 +13,9 @@ This could be solved using the iterator pattern. here we use a nested Iterator c
 so that the changes would need to be made only withing the aggregate class, but not in the client .
 This way, we could hide the storage structure and change the structure of it without making changes to the client.
 */
+
+import java.util.ArrayList;
+import java.util.List;
 
 interface Collector { // Aggregate interface
     Iterator createIterator();
