@@ -1,6 +1,4 @@
 
-import java.util.Scanner;
-import java.lang.System;
 
 // https://faun.pub/chain-of-responsibility-design-pattern-23b5b48562ae : ATM Withdrawal
 // https://www.vinsguru.com/selenium-webdriver-design-patterns-in-test-automation-chain-of-responsibility-design-pattern/ : Online Order 
@@ -53,6 +51,9 @@ Solution :
     Here, the server acts as the sender while the authenticator,code sender,verifier and Logger are the receivers.
 
 */
+
+import java.util.Scanner;
+import java.lang.System;
 class Request{
     // A database query is a request for data from a database.
     private String username,password;
