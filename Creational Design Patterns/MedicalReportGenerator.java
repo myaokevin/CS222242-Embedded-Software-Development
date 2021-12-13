@@ -173,7 +173,7 @@ class BloodSugarComp {
 class SkinMoistureComp {
     private String moisture;
 
-    public SkinMoistureComp(String mositure) {
+    public SkinMoistureComp(String moisture) {
         setMoisture(moisture);
     }
 
